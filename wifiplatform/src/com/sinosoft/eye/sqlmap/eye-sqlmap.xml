@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="dpi">
+	<typeAlias alias="ApType" type="com.sinosoft.eye.bean.ApType"/>
+	<typeAlias alias="POI" type="com.sinosoft.eye.bean.Poi"/>
+	<select id="getApType" resultClass="ApType"  parameterClass="map">  
+			select * 
+			from apindustry  
+			<dynamic prepend="where">
+			<isNotNull prepend="and" property="mac">
+				c.access_mac like "%$mac$%"
+			</isNotNull>
+			<isNotEmpty prepend="and" property="province">
+				province=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="borough">
+				borough=#borough#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="business">
+				business=#business#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="type">
+				type=#type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="level">
+				level=#level#
+			</isNotEmpty>
+		</dynamic>
+     </select>
+     
+     <select id="getPoi" resultClass="POI"  parameterClass="map">  
+			select * 
+			from poi  
+			<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="province">
+				province=#province#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="city">
+				city=#city#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="borough">
+				borough=#borough#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="business">
+				business=#business#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="type">
+				type=#type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="level">
+				level=#level#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="data_id">
+				data_id=#data_id#
+			</isNotEmpty>
+		</dynamic>
+     </select>
+	
+    
+  
+</sqlMap>

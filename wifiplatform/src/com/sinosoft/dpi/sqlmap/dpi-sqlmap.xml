@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="dpi">
+	<typeAlias alias="Appinfo" type="com.sinosoft.dpi.bean.Appinfo"/>
+	<typeAlias alias="Addresses" type="com.sinosoft.onclien.bean.Addresses"/>
+	<select id="getappinfo" resultClass="Hashmap"  parameterClass="map">  
+			select app.app_id,cf.name_cn ,app.group_id 
+			from gateway_2.terminalAppRecord as app  ,config.appconfig as cf 
+			where cf.app_id = app.app_id GROUP by app.app_id;
+     </select>
+	
+    
+  
+</sqlMap>
